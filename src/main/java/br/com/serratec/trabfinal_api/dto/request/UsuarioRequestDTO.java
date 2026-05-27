@@ -1,4 +1,4 @@
-package br.com.serratec.trabfinal_api.dto;
+package br.com.serratec.trabfinal_api.dto.request;
 
 import java.util.HashSet;
 import java.util.Set;

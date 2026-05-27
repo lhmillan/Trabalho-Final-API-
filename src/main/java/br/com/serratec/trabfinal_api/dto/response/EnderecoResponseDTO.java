@@ -1,4 +1,4 @@
-package br.com.serratec.trabfinal_api.dto;
+package br.com.serratec.trabfinal_api.dto.response;
 
 import br.com.serratec.trabfinal_api.model.Endereco;
 

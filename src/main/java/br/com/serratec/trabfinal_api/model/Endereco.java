@@ -1,6 +1,5 @@
 package br.com.serratec.trabfinal_api.model;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,6 +10,14 @@ public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     private String cep;
     private String logradouro;
     private String numero;
@@ -18,20 +25,33 @@ public class Endereco {
     private String localidade;
     private String uf;
 
-    public Endereco() {}
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public Endereco() {
+    }
 
     public void setCep(String cep) {
         this.cep = cep;
     }
+
     public void setLogradouro(String logradouro) {
         this.logradouro = logradouro;
     }
+
     public void setBairro(String bairro) {
         this.bairro = bairro;
     }
+
     public void setLocalidade(String localidade) {
         this.localidade = localidade;
     }
+
     public void setUf(String uf) {
         this.uf = uf;
     }
@@ -39,15 +59,19 @@ public class Endereco {
     public String getCep() {
         return cep;
     }
+
     public String getLogradouro() {
         return logradouro;
     }
+
     public String getBairro() {
         return bairro;
     }
+
     public String getLocalidade() {
         return localidade;
     }
+
     public String getUf() {
         return uf;
     }

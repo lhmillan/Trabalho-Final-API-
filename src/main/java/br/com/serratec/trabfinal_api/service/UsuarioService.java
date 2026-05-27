@@ -9,8 +9,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.serratec.trabfinal_api.configuration.MailConfig;
-import br.com.serratec.trabfinal_api.dto.UsuarioRequestDTO;
-import br.com.serratec.trabfinal_api.dto.UsuarioResponseDTO;
+import br.com.serratec.trabfinal_api.dto.request.UsuarioRequestDTO;
+import br.com.serratec.trabfinal_api.dto.response.UsuarioResponseDTO;
 import br.com.serratec.trabfinal_api.errors.UsuarioException;
 import br.com.serratec.trabfinal_api.model.Usuario;
 import br.com.serratec.trabfinal_api.model.UsuarioPerfil;

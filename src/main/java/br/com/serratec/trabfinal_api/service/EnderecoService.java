@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import br.com.serratec.trabfinal_api.dto.EnderecoResponseDTO;
+import br.com.serratec.trabfinal_api.dto.response.EnderecoResponseDTO;
 import br.com.serratec.trabfinal_api.errors.EnderecoException;
 import br.com.serratec.trabfinal_api.model.Endereco;
 import br.com.serratec.trabfinal_api.repository.EnderecoRepository;

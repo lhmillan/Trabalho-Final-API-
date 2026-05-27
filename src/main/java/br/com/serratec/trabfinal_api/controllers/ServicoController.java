@@ -1,4 +1,4 @@
-package br.com.serratec.trabfinal_api.controller;
+package br.com.serratec.trabfinal_api.controllers;
 
 import java.util.List;
 

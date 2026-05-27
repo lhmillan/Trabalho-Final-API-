@@ -1,11 +1,11 @@
-package br.com.serratec.trabfinal_api.controller;
+package br.com.serratec.trabfinal_api.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.serratec.trabfinal_api.dto.EnderecoResponseDTO;
+import br.com.serratec.trabfinal_api.dto.response.EnderecoResponseDTO;
 import br.com.serratec.trabfinal_api.service.EnderecoService;
 
 import org.springframework.web.bind.annotation.GetMapping;
