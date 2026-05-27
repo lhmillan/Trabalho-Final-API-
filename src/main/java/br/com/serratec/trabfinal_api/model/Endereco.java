@@ -1,13 +1,19 @@
 package br.com.serratec.trabfinal_api.model;
 
-import jakarta.persistence.Embeddable;
 
-@Embeddable
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Endereco {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String cep;
-
     private String logradouro;
+    private String numero;
     private String bairro;
     private String localidade;
     private String uf;

@@ -1,0 +1,267 @@
+2026-05-20 21:28:42.060584-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR" already exists; SQL statement:
+create global temporary table HTE_vendedor(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-20 21:28:42.063583-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR2" already exists; SQL statement:
+create global temporary table HTE_vendedor2(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, cnpj varchar(255), email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-20 21:28:42.066615-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_LANCAMENTO_VENDAS" already exists; SQL statement:
+create global temporary table HTE_lancamento_vendas(data date, rn_ integer not null, id bigint, valor float(53), vendedor_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-20 21:28:42.067625-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR1" already exists; SQL statement:
+create global temporary table HTE_vendedor1(rn_ integer not null, comissao float(53), id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-20 21:28:43.921753-03:00 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR" already exists; SQL statement:
+create global temporary table HTE_vendedor(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-20 21:28:43.922754-03:00 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR2" already exists; SQL statement:
+create global temporary table HTE_vendedor2(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, cnpj varchar(255), email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-20 21:28:43.922754-03:00 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_LANCAMENTO_VENDAS" already exists; SQL statement:
+create global temporary table HTE_lancamento_vendas(data date, rn_ integer not null, id bigint, valor float(53), vendedor_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-20 21:28:43.923751-03:00 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR1" already exists; SQL statement:
+create global temporary table HTE_vendedor1(rn_ integer not null, comissao float(53), id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 15:41:45.914529-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO vendedor (id, nome, email, salario, tipo_vendedor, cnpj, comissao) \000d\000aVALUES (1, ""Jessey Titlow"", ""jtitlow0@icio.us"", 9028, ""AUTONOMO"", 123456[*]', 2130);"; SQL statement:
+INSERT INTO vendedor (id, nome, email, salario, tipo_vendedor, cnpj, comissao) 
+VALUES (1, "Jessey Titlow", "jtitlow0@icio.us", 9028, "AUTONOMO", 123456', 2130); [42000-240]
+2026-05-21 15:41:57.297168-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "Jessey Titlow" not found; SQL statement:
+INSERT INTO vendedor (id, nome, email, salario, tipo_vendedor, cnpj, comissao) 
+VALUES (1, "Jessey Titlow", "jtitlow0@icio.us", 9028, "AUTONOMO", "123456", 2130) [42122-240]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.command.dml.Insert.doPrepare(Insert.java:299)
+	at org.h2.command.dml.DataChangeStatement.prepare(DataChangeStatement.java:40)
+	at org.h2.command.Parser.prepareCommand(Parser.java:492)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:647)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:563)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1160)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1344)
+	at org.h2.server.web.WebApp.query(WebApp.java:1142)
+	at org.h2.server.web.WebApp.query(WebApp.java:1118)
+	at org.h2.server.web.WebApp.process(WebApp.java:244)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:653)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:723)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:128)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1801)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2026-05-21 17:26:01.003401-03:00 jdbc[54]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR" already exists; SQL statement:
+create global temporary table HTE_vendedor(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 17:26:01.007774-03:00 jdbc[54]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR2" already exists; SQL statement:
+create global temporary table HTE_vendedor2(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, cnpj varchar(255), email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 17:26:01.009769-03:00 jdbc[54]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_LANCAMENTO_VENDAS" already exists; SQL statement:
+create global temporary table HTE_lancamento_vendas(data date, rn_ integer not null, id bigint, valor float(53), vendedor_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-21 17:26:01.012301-03:00 jdbc[54]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR1" already exists; SQL statement:
+create global temporary table HTE_vendedor1(rn_ integer not null, comissao float(53), id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 17:26:25.757330-03:00 jdbc[64]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR" already exists; SQL statement:
+create global temporary table HTE_vendedor(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 17:26:25.758363-03:00 jdbc[64]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR2" already exists; SQL statement:
+create global temporary table HTE_vendedor2(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, cnpj varchar(255), email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 17:26:25.759374-03:00 jdbc[64]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_LANCAMENTO_VENDAS" already exists; SQL statement:
+create global temporary table HTE_lancamento_vendas(data date, rn_ integer not null, id bigint, valor float(53), vendedor_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-21 17:26:25.760386-03:00 jdbc[64]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR1" already exists; SQL statement:
+create global temporary table HTE_vendedor1(rn_ integer not null, comissao float(53), id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 17:26:50.978787-03:00 jdbc[74]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR" already exists; SQL statement:
+create global temporary table HTE_vendedor(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 17:26:50.981666-03:00 jdbc[74]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR2" already exists; SQL statement:
+create global temporary table HTE_vendedor2(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, cnpj varchar(255), email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 17:26:50.982695-03:00 jdbc[74]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_LANCAMENTO_VENDAS" already exists; SQL statement:
+create global temporary table HTE_lancamento_vendas(data date, rn_ integer not null, id bigint, valor float(53), vendedor_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-21 17:26:50.984960-03:00 jdbc[74]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR1" already exists; SQL statement:
+create global temporary table HTE_vendedor1(rn_ integer not null, comissao float(53), id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 20:51:41.726494-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR" already exists; SQL statement:
+create global temporary table HTE_vendedor(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 20:51:41.731527-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR2" already exists; SQL statement:
+create global temporary table HTE_vendedor2(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, cnpj varchar(255), email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 20:51:41.732525-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_LANCAMENTO_VENDAS" already exists; SQL statement:
+create global temporary table HTE_lancamento_vendas(data date, rn_ integer not null, id bigint, valor float(53), vendedor_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-21 20:51:41.733677-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR1" already exists; SQL statement:
+create global temporary table HTE_vendedor1(rn_ integer not null, comissao float(53), id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 20:51:47.227250-03:00 jdbc[24]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR" already exists; SQL statement:
+create global temporary table HTE_vendedor(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 20:51:47.232244-03:00 jdbc[24]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR2" already exists; SQL statement:
+create global temporary table HTE_vendedor2(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, cnpj varchar(255), email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 20:51:47.234748-03:00 jdbc[24]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_LANCAMENTO_VENDAS" already exists; SQL statement:
+create global temporary table HTE_lancamento_vendas(data date, rn_ integer not null, id bigint, valor float(53), vendedor_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-21 20:51:47.235746-03:00 jdbc[24]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR1" already exists; SQL statement:
+create global temporary table HTE_vendedor1(rn_ integer not null, comissao float(53), id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 20:51:49.402363-03:00 jdbc[34]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR" already exists; SQL statement:
+create global temporary table HTE_vendedor(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 20:51:49.403413-03:00 jdbc[34]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR2" already exists; SQL statement:
+create global temporary table HTE_vendedor2(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, cnpj varchar(255), email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 20:51:49.403413-03:00 jdbc[34]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_LANCAMENTO_VENDAS" already exists; SQL statement:
+create global temporary table HTE_lancamento_vendas(data date, rn_ integer not null, id bigint, valor float(53), vendedor_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-21 20:51:49.404664-03:00 jdbc[34]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR1" already exists; SQL statement:
+create global temporary table HTE_vendedor1(rn_ integer not null, comissao float(53), id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 20:52:01.528137-03:00 jdbc[44]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR" already exists; SQL statement:
+create global temporary table HTE_vendedor(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 20:52:01.529142-03:00 jdbc[44]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR2" already exists; SQL statement:
+create global temporary table HTE_vendedor2(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, cnpj varchar(255), email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 20:52:01.530367-03:00 jdbc[44]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_LANCAMENTO_VENDAS" already exists; SQL statement:
+create global temporary table HTE_lancamento_vendas(data date, rn_ integer not null, id bigint, valor float(53), vendedor_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-21 20:52:01.530367-03:00 jdbc[44]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR1" already exists; SQL statement:
+create global temporary table HTE_vendedor1(rn_ integer not null, comissao float(53), id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 20:52:16.763835-03:00 jdbc[55]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR" already exists; SQL statement:
+create global temporary table HTE_vendedor(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 20:52:16.764872-03:00 jdbc[55]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR2" already exists; SQL statement:
+create global temporary table HTE_vendedor2(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, cnpj varchar(255), email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 20:52:16.766305-03:00 jdbc[55]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_LANCAMENTO_VENDAS" already exists; SQL statement:
+create global temporary table HTE_lancamento_vendas(data date, rn_ integer not null, id bigint, valor float(53), vendedor_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-21 20:52:16.767311-03:00 jdbc[55]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR1" already exists; SQL statement:
+create global temporary table HTE_vendedor1(rn_ integer not null, comissao float(53), id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:02:41.465567-03:00 jdbc[65]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR" already exists; SQL statement:
+create global temporary table HTE_vendedor(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:02:41.465567-03:00 jdbc[65]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR2" already exists; SQL statement:
+create global temporary table HTE_vendedor2(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, cnpj varchar(255), email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:02:41.466916-03:00 jdbc[65]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_LANCAMENTO_VENDAS" already exists; SQL statement:
+create global temporary table HTE_lancamento_vendas(data date, rn_ integer not null, id bigint, valor float(53), vendedor_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-21 21:02:41.466916-03:00 jdbc[65]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR1" already exists; SQL statement:
+create global temporary table HTE_vendedor1(rn_ integer not null, comissao float(53), id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:03:09.785305-03:00 jdbc[75]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR" already exists; SQL statement:
+create global temporary table HTE_vendedor(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:03:09.786363-03:00 jdbc[75]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR2" already exists; SQL statement:
+create global temporary table HTE_vendedor2(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, cnpj varchar(255), email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:03:09.786868-03:00 jdbc[75]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_LANCAMENTO_VENDAS" already exists; SQL statement:
+create global temporary table HTE_lancamento_vendas(data date, rn_ integer not null, id bigint, valor float(53), vendedor_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-21 21:03:09.788003-03:00 jdbc[75]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR1" already exists; SQL statement:
+create global temporary table HTE_vendedor1(rn_ integer not null, comissao float(53), id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:05:42.716204-03:00 jdbc[85]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR" already exists; SQL statement:
+create global temporary table HTE_vendedor(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:05:42.718420-03:00 jdbc[85]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR2" already exists; SQL statement:
+create global temporary table HTE_vendedor2(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, cnpj varchar(255), email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:05:42.720418-03:00 jdbc[85]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_LANCAMENTO_VENDAS" already exists; SQL statement:
+create global temporary table HTE_lancamento_vendas(data date, rn_ integer not null, id bigint, valor float(53), vendedor_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-21 21:05:42.720418-03:00 jdbc[85]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR1" already exists; SQL statement:
+create global temporary table HTE_vendedor1(rn_ integer not null, comissao float(53), id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:05:44.928179-03:00 jdbc[95]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR" already exists; SQL statement:
+create global temporary table HTE_vendedor(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:05:44.929461-03:00 jdbc[95]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR2" already exists; SQL statement:
+create global temporary table HTE_vendedor2(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, cnpj varchar(255), email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:05:44.930466-03:00 jdbc[95]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_LANCAMENTO_VENDAS" already exists; SQL statement:
+create global temporary table HTE_lancamento_vendas(data date, rn_ integer not null, id bigint, valor float(53), vendedor_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-21 21:05:44.931464-03:00 jdbc[95]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR1" already exists; SQL statement:
+create global temporary table HTE_vendedor1(rn_ integer not null, comissao float(53), id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:06:15.193082-03:00 jdbc[105]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR" already exists; SQL statement:
+create global temporary table HTE_vendedor(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:06:15.193082-03:00 jdbc[105]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR2" already exists; SQL statement:
+create global temporary table HTE_vendedor2(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, cnpj varchar(255), email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:06:15.194552-03:00 jdbc[105]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_LANCAMENTO_VENDAS" already exists; SQL statement:
+create global temporary table HTE_lancamento_vendas(data date, rn_ integer not null, id bigint, valor float(53), vendedor_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-21 21:06:15.194552-03:00 jdbc[105]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR1" already exists; SQL statement:
+create global temporary table HTE_vendedor1(rn_ integer not null, comissao float(53), id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:43:30.193372-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR" already exists; SQL statement:
+create global temporary table HTE_vendedor(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:43:30.197882-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR2" already exists; SQL statement:
+create global temporary table HTE_vendedor2(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, cnpj varchar(255), email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:43:30.197882-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_LANCAMENTO_VENDAS" already exists; SQL statement:
+create global temporary table HTE_lancamento_vendas(data date, rn_ integer not null, id bigint, valor float(53), vendedor_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-21 21:43:30.198881-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR1" already exists; SQL statement:
+create global temporary table HTE_vendedor1(rn_ integer not null, comissao float(53), id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:47:30.516118-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR" already exists; SQL statement:
+create global temporary table HTE_vendedor(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:47:30.521127-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR2" already exists; SQL statement:
+create global temporary table HTE_vendedor2(rn_ integer not null, id bigint, salario float(53), class varchar(31) not null, cnpj varchar(255), email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 21:47:30.523274-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_LANCAMENTO_VENDAS" already exists; SQL statement:
+create global temporary table HTE_lancamento_vendas(data date, rn_ integer not null, id bigint, valor float(53), vendedor_id bigint, primary key (rn_)) transactional [42101-240]
+2026-05-21 21:47:30.524457-03:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_VENDEDOR1" already exists; SQL statement:
+create global temporary table HTE_vendedor1(rn_ integer not null, comissao float(53), id bigint, salario float(53), class varchar(31) not null, email varchar(255), nome varchar(255), primary key (rn_)) transactional [42101-240]
+2026-05-21 22:01:21.361632-03:00 jdbc[24]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "delete [*]* from vendedor"; expected "identifier"; SQL statement:
+delete * from vendedor [42001-240]
