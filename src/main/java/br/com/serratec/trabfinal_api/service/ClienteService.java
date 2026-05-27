@@ -1,66 +1,82 @@
 package br.com.serratec.trabfinal_api.service;
 
-import br.com.serratec.trabfinal_api.configuration.MailConfig;
-import java.util.List;
+import br.com.serratec.trabfinal_api.dto.request.ClienteRequestDTO;
+import br.com.serratec.trabfinal_api.dto.response.ClienteResponseDTO;
+import br.com.serratec.trabfinal_api.model.Cliente;
+import br.com.serratec.trabfinal_api.repository.ClienteRepository;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.serratec.trabfinal_api.dto.ClienteRequestDTO;
-import br.com.serratec.trabfinal_api.dto.ClienteResponseDTO;
-import br.com.serratec.trabfinal_api.dto.EnderecoResponseDTO;
-import br.com.serratec.trabfinal_api.model.Cliente;
-import br.com.serratec.trabfinal_api.model.Endereco;
-import br.com.serratec.trabfinal_api.repository.ClienteRepository;
-import br.com.serratec.trabfinal_api.repository.EnderecoRepository;
+import java.util.List;
 
 @Service
-
 public class ClienteService {
 
-    private MailConfig mailConfig;
+    private final ClienteRepository clienteRepository;
 
-    @Autowired
-    private ClienteRepository clienteRepository;
-
-    @Autowired
-    private EnderecoRepository enderecoRepository;
-
-    @Autowired
-    private EnderecoService service;
-
-    public List<ClienteResponseDTO> listar() {
-        return clienteRepository.findAll().stream()
-                .map(cliente -> new ClienteResponseDTO(cliente))
-                .toList();
+    public ClienteService(ClienteRepository clienteRepository) {
+        this.clienteRepository = clienteRepository;
     }
 
-    public ClienteResponseDTO buscarPorId(Long id) {
-        Cliente cliente = clienteRepository.findById(id).orElse(null);
+    private ClienteResponseDTO converterParaDTO(Cliente cliente) {
 
-        return new ClienteResponseDTO(cliente);
+        return new ClienteResponseDTO(
+                cliente.getId(),
+                cliente.getNome(),
+                cliente.getTelefone(),
+                cliente.getEmail(),
+                cliente.getCpf(),
+                cliente.getEndereco()
+        );
     }
 
-    public ClienteResponseDTO cadastrar(ClienteRequestDTO dto) {
-        
-        EnderecoResponseDTO enderecoDTO = service.buscarCep(dto.endereco().getCep());  
-        Endereco endereco = enderecoRepository.findById(enderecoDTO.id()).orElse(null);
-        endereco.setNumero(dto.endereco().getNumero());
-        endereco = enderecoRepository.save(endereco);
+    private void atualizarDadosCliente(Cliente cliente, ClienteRequestDTO dto) {
 
-        Cliente cliente = new Cliente();
         cliente.setNome(dto.nome());
         cliente.setTelefone(dto.telefone());
         cliente.setEmail(dto.email());
         cliente.setCpf(dto.cpf());
-        cliente.setEndereco(endereco);
-        
-        cliente = clienteRepository.save(cliente);
-        String txtEmail = "Parabéns "+cliente.getNome()+"! Seguem abaixo os dados do seu cadastro:\n"+
-        "Email: "+cliente.getEmail()+"\nTelefone: "+cliente.getTelefone()+"\nEndereço: "+cliente.getEndereco();
-        mailConfig.sendEmail(dto.email(), "Cadastro realizado na Oficina!", txtEmail);
-        return new ClienteResponseDTO(cliente);
-        
+        cliente.setEndereco(dto.endereco());
     }
 
+    public List<ClienteResponseDTO> listarClientes() {
+
+        return clienteRepository.findAll().stream().map(this::converterParaDTO).toList();
+    }
+
+    public ClienteResponseDTO buscarPorId(Long id) {
+
+        Cliente cliente = clienteRepository.findById(id).orElseThrow(() ->
+                        new RuntimeException("Cliente não encontrado!"));
+
+        return converterParaDTO(cliente);
+    }
+
+    public ClienteResponseDTO cadastrarCliente(ClienteRequestDTO dto) {
+
+        Cliente cliente = new Cliente();
+        atualizarDadosCliente(cliente, dto);
+        cliente = clienteRepository.save(cliente);
+
+        return converterParaDTO(cliente);
+    }
+
+    public ClienteResponseDTO atualizarCliente(Long id, ClienteRequestDTO dto) {
+
+        Cliente cliente = clienteRepository.findById(id).orElseThrow(() ->
+                        new RuntimeException("Cliente não encontrado!"));
+
+        atualizarDadosCliente(cliente, dto);
+        cliente = clienteRepository.save(cliente);
+
+        return converterParaDTO(cliente);
+    }
+
+    public void removerCliente(Long id) {
+
+        Cliente cliente = clienteRepository.findById(id).orElseThrow(() ->
+                        new RuntimeException("Cliente não encontrado!"));
+
+        clienteRepository.delete(cliente);
+    }
 }

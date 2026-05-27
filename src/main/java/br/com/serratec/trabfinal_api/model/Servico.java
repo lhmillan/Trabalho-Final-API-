@@ -1,41 +1,31 @@
 package br.com.serratec.trabfinal_api.model;
 
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
 @Entity
+@Table(name = "servico")
 public class Servico {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String descricao;
     private Double valor;
-    private String tempo_estimado;
+    private String tempoEstimado;
 
-    public String getDescricao() {
-        return descricao;
-    }
+    public Servico() {}
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+    public Long getId() { return id; }
+    public String getDescricao() { return this.descricao; }
+    public Double getValor() { return this.valor; }
+    public String getTempoEstimado() { return this.tempoEstimado; }
 
-    public Double getValor() {
-        return valor;
-    }
-
-    public void setValor(Double valor) {
-        this.valor = valor;
-    }
-
-    public String getTempo_estimado() {
-        return tempo_estimado;
-    }
-
-    public void setTempo_estimado(String tempo_estimado) {
-        this.tempo_estimado = tempo_estimado;
-    }
-
+    public void setId(Long id) { this.id = id; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
+    public void setValor(Double valor) { this.valor = valor; }
+    public void setTempoEstimado(String tempo) { this.tempoEstimado = tempo; }
 }
