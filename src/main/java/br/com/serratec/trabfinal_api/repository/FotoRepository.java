@@ -9,6 +9,6 @@ import br.com.serratec.trabfinal_api.model.Veiculo;
 
 public interface FotoRepository extends JpaRepository<Foto, Long>{
 	
-	Optional<Foto> findByFuncionario(Veiculo veiculo);
+	Optional<Foto> findByVeiculo(Veiculo veiculo);
 	
 }
