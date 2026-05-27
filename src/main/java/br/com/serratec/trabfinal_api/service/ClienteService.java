@@ -44,12 +44,17 @@ public class ClienteService {
     }
 
     private void atualizarDadosCliente(Cliente cliente, ClienteRequestDTO dto) {
+        EnderecoResponseDTO enderecoDTO = service.buscarCep(dto.endereco().cep());
+        Endereco endereco = enderecoRepository.findById(enderecoDTO.id()).orElse(null);
+        endereco.setNumero(dto.endereco().numero());
 
+        cliente.setEndereco(endereco);
+        endereco = enderecoRepository.save(endereco);
         cliente.setNome(dto.nome());
         cliente.setTelefone(dto.telefone());
         cliente.setEmail(dto.email());
         cliente.setCpf(dto.cpf());
-        cliente.setEndereco(dto.endereco());
+        cliente.setEndereco(endereco);
     }
 
     public List<ClienteResponseDTO> listarClientes() {
@@ -70,15 +75,15 @@ public class ClienteService {
 
         Cliente cliente = new Cliente();
 
-        EnderecoResponseDTO enderecoDTO = service.buscarCep(dto.endereco().getCep());
+        EnderecoResponseDTO enderecoDTO = service.buscarCep(dto.endereco().cep());
         Endereco endereco = enderecoRepository.findById(enderecoDTO.id()).orElse(null);
-        endereco.setNumero(dto.endereco().getNumero());
-        endereco = enderecoRepository.save(endereco);
+        endereco.setNumero(dto.endereco().numero());
+
         cliente.setEndereco(endereco);
+        endereco = enderecoRepository.save(endereco);
         atualizarDadosCliente(cliente, dto);
-        System.out.println(cliente);
+
         cliente = clienteRepository.save(cliente);
-        System.out.println("Teste 2");
 
         String txtEmail = "Parabéns, " + cliente.getNome() + "! Seguem abaixo os dados do seu cadastro:\n" +
                 "Email: " + cliente.getEmail() + "\nTelefone: " + cliente.getTelefone() + "\nEndereço: "
@@ -96,9 +101,9 @@ public class ClienteService {
         // pegando o cep e o número do Response DTO e convertendo para o
         // campo endereço de cliente
 
-        EnderecoResponseDTO enderecoDTO = service.buscarCep(dto.endereco().getCep());
+        EnderecoResponseDTO enderecoDTO = service.buscarCep(dto.endereco().cep());
         Endereco endereco = enderecoRepository.findById(enderecoDTO.id()).orElse(null);
-        endereco.setNumero(dto.endereco().getNumero());
+        endereco.setNumero(dto.endereco().numero());
         atualizarDadosCliente(cliente, dto);
 
         endereco = enderecoRepository.save(endereco);

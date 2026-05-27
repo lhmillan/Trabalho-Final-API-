@@ -2,6 +2,7 @@ package br.com.serratec.trabfinal_api.dto.request;
 
 import org.hibernate.annotations.processing.Pattern;
 
+import br.com.serratec.trabfinal_api.dto.response.EnderecoResponseDTO;
 import br.com.serratec.trabfinal_api.model.Endereco;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.Valid;
@@ -26,7 +27,7 @@ public record ClienteRequestDTO(
     String email,
 
     @Valid
-    Endereco endereco
+    EnderecoResponseDTO endereco
 
     ){
 }
