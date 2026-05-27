@@ -86,10 +86,6 @@ public class Cliente {
         return veiculo;
     }
 
-    @Override
-    public String toString() {
-        return "Nome= " + nome + "\nEmail=" + email + "\nTelefone=" + telefone + "\nCpf=" + cpf + "\nEndereco= "
-                + endereco;
-    }
+ 
 
 }

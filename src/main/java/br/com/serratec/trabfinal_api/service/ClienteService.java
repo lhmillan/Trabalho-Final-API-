@@ -1,5 +1,6 @@
 package br.com.serratec.trabfinal_api.service;
 
+import br.com.serratec.trabfinal_api.configuration.MailConfig;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ import br.com.serratec.trabfinal_api.repository.EnderecoRepository;
 @Service
 
 public class ClienteService {
+
+    private MailConfig mailConfig;
 
     @Autowired
     private ClienteRepository clienteRepository;
@@ -51,10 +54,13 @@ public class ClienteService {
         cliente.setEmail(dto.email());
         cliente.setCpf(dto.cpf());
         cliente.setEndereco(endereco);
-
+        
         cliente = clienteRepository.save(cliente);
-
+        String txtEmail = "Parabéns "+cliente.getNome()+"! Seguem abaixo os dados do seu cadastro:\n"+
+        "Email: "+cliente.getEmail()+"\nTelefone: "+cliente.getTelefone()+"\nEndereço: "+cliente.getEndereco();
+        mailConfig.sendEmail(dto.email(), "Cadastro realizado na Oficina!", txtEmail);
         return new ClienteResponseDTO(cliente);
+        
     }
 
 }
