@@ -8,6 +8,7 @@ import br.com.serratec.trabfinal_api.model.Cliente;
 import br.com.serratec.trabfinal_api.model.Endereco;
 import br.com.serratec.trabfinal_api.repository.ClienteRepository;
 import br.com.serratec.trabfinal_api.repository.EnderecoRepository;
+import jakarta.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,11 +65,21 @@ public class ClienteService {
         return converterParaDTO(cliente);
     }
 
+    @Transactional
     public ClienteResponseDTO cadastrarCliente(ClienteRequestDTO dto) {
 
         Cliente cliente = new Cliente();
+
+        EnderecoResponseDTO enderecoDTO = service.buscarCep(dto.endereco().getCep());
+        Endereco endereco = enderecoRepository.findById(enderecoDTO.id()).orElse(null);
+        endereco.setNumero(dto.endereco().getNumero());
+        endereco = enderecoRepository.save(endereco);
+        cliente.setEndereco(endereco);
         atualizarDadosCliente(cliente, dto);
+        System.out.println(cliente);
         cliente = clienteRepository.save(cliente);
+        System.out.println("Teste 2");
+
         String txtEmail = "Parabéns, " + cliente.getNome() + "! Seguem abaixo os dados do seu cadastro:\n" +
                 "Email: " + cliente.getEmail() + "\nTelefone: " + cliente.getTelefone() + "\nEndereço: "
                 + cliente.getEndereco();
@@ -78,10 +89,10 @@ public class ClienteService {
     }
 
     public ClienteResponseDTO atualizarCliente(Long id, ClienteRequestDTO dto) {
-        
+
         Cliente cliente = clienteRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado!"));
-           
+
         // pegando o cep e o número do Response DTO e convertendo para o
         // campo endereço de cliente
 

@@ -3,6 +3,7 @@ package br.com.serratec.trabfinal_api.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,7 +22,7 @@ public class Cliente {
     private String telefone;
     private String cpf;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_endereco")
     private Endereco endereco;
     
@@ -76,12 +77,15 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public void setVeiculo(List<Veiculo> veiculo) {
-        this.veiculo = veiculo;
-    }
 
     public List<Veiculo> getVeiculo() {
         return veiculo;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente [id=" + id + ", nome=" + nome + ", email=" + email + ", telefone=" + telefone + ", cpf=" + cpf
+                + ", endereco=" + endereco;
     }
 
 }

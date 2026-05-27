@@ -10,13 +10,6 @@ public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     private String cep;
     private String logradouro;
@@ -54,6 +47,14 @@ public class Endereco {
 
     public void setUf(String uf) {
         this.uf = uf;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCep() {
