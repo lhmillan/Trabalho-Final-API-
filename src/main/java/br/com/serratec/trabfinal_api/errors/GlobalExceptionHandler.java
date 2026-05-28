@@ -8,9 +8,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import br.com.serratec.trabfinal_api.errors.BancoDeDadosException;
-import br.com.serratec.trabfinal_api.errors.CepInvalidoException;
-import br.com.serratec.trabfinal_api.errors.RegistroNaoEncontradoException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -50,5 +47,11 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErroResponse> handleGeneric(Exception e) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(new ErroResponse(LocalDateTime.now(), 500, "Ocorreu um erro inesperado"));
+    }
+
+    @ExceptionHandler(PecaException.class)
+    public ResponseEntity<ErroResponse> handlePecaException(PecaException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(new ErroResponse(LocalDateTime.now(), HttpStatus.BAD_REQUEST.value(), e.getMessage()));
     }
 }

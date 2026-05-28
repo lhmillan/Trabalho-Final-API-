@@ -28,51 +28,52 @@ import br.com.serratec.trabfinal_api.security.JwtUtil;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig {
-	
+
 	@Autowired
 	private JwtUtil jwtUtil;
 
 	@Autowired
 	private UserDetailsService userDetailsService;
-	
+
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-	    http.csrf(csrf -> csrf.disable())
-	        .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-	        .authorizeHttpRequests(requests -> requests
-	            .requestMatchers(HttpMethod.GET,"/clientes").permitAll()
-	            .requestMatchers(HttpMethod.POST,"/clientes").permitAll()
-	            .requestMatchers(HttpMethod.POST,"/perfis").permitAll()
-	            .requestMatchers(HttpMethod.POST,"/veiculos").permitAll()
-	            .requestMatchers(HttpMethod.GET,"/veiculos").permitAll()
-	            .requestMatchers("/h2-console/**").permitAll()
-	            
-	            .requestMatchers(HttpMethod.POST,"/usuarios").permitAll()
+		http.csrf(csrf -> csrf.disable())
+				.cors(cors -> cors.configurationSource(corsConfigurationSource()))
+				.authorizeHttpRequests(requests -> requests
+						.requestMatchers(HttpMethod.GET, "/clientes/**").permitAll()
+						.requestMatchers(HttpMethod.POST, "/clientes/**").permitAll()
+						.requestMatchers(HttpMethod.PUT, "/clientes/**").permitAll()
+						.requestMatchers(HttpMethod.GET, "/pecas/**").permitAll()
+						.requestMatchers(HttpMethod.POST, "/pecas/**").permitAll()
+						.requestMatchers(HttpMethod.PUT, "/pecas/**").permitAll()
+						.requestMatchers(HttpMethod.DELETE, "/pecas/**").permitAll()
+						
+						.requestMatchers(HttpMethod.POST, "/perfis").permitAll()
+						.requestMatchers(HttpMethod.POST, "/veiculos").permitAll()
+						.requestMatchers(HttpMethod.GET, "/veiculos").permitAll()
+						.requestMatchers("/h2-console/**").permitAll()
 
-	            .requestMatchers(HttpMethod.GET,"/usuarios").hasRole("ADMIN")
-	            .requestMatchers(HttpMethod.GET, "/veiculos/*/foto").hasAnyRole("ADMIN") //,"teste1", "teste2"
-	            .requestMatchers(HttpMethod.POST, "/veiculos").hasAnyRole("ADMIN")
-	            .anyRequest().authenticated()
-	        )
-	        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-	    .headers(headers -> headers.frameOptions(FrameOptionsConfig::disable)
-            );
-	    
-	    
-	    http.addFilterBefore(new JwtAuthenticationFilter(
-	            authenticationManager(http.getSharedObject(AuthenticationConfiguration.class)), jwtUtil),
-	            UsernamePasswordAuthenticationFilter.class);
+						.requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
 
-	    http.addFilterBefore(new JwtAuthorizationFilter(
-	            authenticationManager(http.getSharedObject(AuthenticationConfiguration.class)), jwtUtil, userDetailsService),
-	            UsernamePasswordAuthenticationFilter.class);
+						.requestMatchers(HttpMethod.GET, "/usuarios").hasRole("ADMIN")
+						.requestMatchers(HttpMethod.GET, "/veiculos/*/foto").hasAnyRole("ADMIN") // ,"teste1", "teste2"
+						.requestMatchers(HttpMethod.POST, "/veiculos").hasAnyRole("ADMIN")
+						.anyRequest().authenticated())
+				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+				.headers(headers -> headers.frameOptions(FrameOptionsConfig::disable));
 
-	    return http.build();
-	   	}
+		http.addFilterBefore(new JwtAuthenticationFilter(
+				authenticationManager(http.getSharedObject(AuthenticationConfiguration.class)), jwtUtil),
+				UsernamePasswordAuthenticationFilter.class);
 
+		http.addFilterBefore(new JwtAuthorizationFilter(
+				authenticationManager(http.getSharedObject(AuthenticationConfiguration.class)), jwtUtil,
+				userDetailsService),
+				UsernamePasswordAuthenticationFilter.class);
 
-	
-	
+		return http.build();
+	}
+
 	@Bean
 	BCryptPasswordEncoder criptografar() {
 		return new BCryptPasswordEncoder();
@@ -83,7 +84,7 @@ public class SecurityConfig {
 			throws Exception {
 		return authenticationConfiguration.getAuthenticationManager();
 	}
-	
+
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
@@ -93,7 +94,5 @@ public class SecurityConfig {
 		source.registerCorsConfiguration("/**", corsConfiguration.applyPermitDefaultValues());
 		return source;
 	}
-	
+
 }
-
-

@@ -7,6 +7,7 @@ public class ErroResponse {
     private LocalDateTime timestamp;
     private int status;
     private String mensagem;
+    
 
     public ErroResponse(LocalDateTime timestamp, int status, String mensagem) {
         this.timestamp = timestamp;
