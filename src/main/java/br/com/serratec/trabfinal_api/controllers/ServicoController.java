@@ -25,11 +25,8 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/servicos")
 public class ServicoController {
- @Autowired
-    private ServicoService service;
-    
     @Autowired
-    private FotoService fotoService; 
+    private ServicoService service;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

@@ -38,8 +38,8 @@ public class ClienteService {
                 cliente.getId(),
                 cliente.getNome(),
                 cliente.getTelefone(),
-                cliente.getEmail(),
                 cliente.getCpf(),
+                cliente.getEmail(),
                 cliente.getEndereco());
     }
 
@@ -52,8 +52,8 @@ public class ClienteService {
         endereco = enderecoRepository.save(endereco);
         cliente.setNome(dto.nome());
         cliente.setTelefone(dto.telefone());
-        cliente.setEmail(dto.email());
         cliente.setCpf(dto.cpf());
+        cliente.setEmail(dto.email());
         cliente.setEndereco(endereco);
     }
 
