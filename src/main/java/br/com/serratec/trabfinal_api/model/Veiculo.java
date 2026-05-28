@@ -23,8 +23,8 @@ public class Veiculo {
     private String ano;
     private String cor;
 
-    @JsonBackReference
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    
+    @ManyToOne
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 

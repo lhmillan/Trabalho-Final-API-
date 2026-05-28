@@ -1,7 +1,5 @@
 package br.com.serratec.trabfinal_api.dto.request;
 
-import br.com.serratec.trabfinal_api.dto.response.ClienteResponseDTO;
-import br.com.serratec.trabfinal_api.model.Cliente;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -26,6 +24,5 @@ public record VeiculoRequestDTO (
         @NotBlank(message = "Cor do carro é obrigatório!")
         String cor,
 
-        @NotBlank(message = "Obrigatório definir o dono do veículo!")
-        ClienteResponseDTO cliente
+        Long clienteId
 ){}
