@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import org.springframework.web.bind.annotation.RequestBody;
-
 
 import br.com.serratec.trabfinal_api.errors.PecaException;
 import br.com.serratec.trabfinal_api.model.Pecas;
@@ -30,8 +32,8 @@ public class PecasService {
         return repository.findById(id);
     }
 
-    public List<Pecas> listar() {
-        return repository.findAll();
+    public Page<Pecas> listar(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     public void alterar(@Valid @RequestBody Pecas pecas, @PathVariable Long id) {
@@ -49,6 +51,6 @@ public class PecasService {
         } else {
             throw new PecaException("Peça não encontrada. Exclusão não realizada!");
         }
-        
+
     }
 }
