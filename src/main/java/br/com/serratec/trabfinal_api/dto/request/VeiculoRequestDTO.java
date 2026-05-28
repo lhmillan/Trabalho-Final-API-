@@ -24,6 +24,5 @@ public record VeiculoRequestDTO (
         @NotBlank(message = "Cor do carro é obrigatório!")
         String cor,
 
-        @NotBlank
         Long clienteId
 ){}

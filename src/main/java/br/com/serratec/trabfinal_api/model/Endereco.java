@@ -1,48 +1,91 @@
 package br.com.serratec.trabfinal_api.model;
 
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-@Embeddable
+@Entity
 public class Endereco {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     private String cep;
-
     private String logradouro;
+    private String numero;
     private String bairro;
     private String localidade;
     private String uf;
 
-    public Endereco() {}
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public Endereco() {
+    }
 
     public void setCep(String cep) {
         this.cep = cep;
     }
+
     public void setLogradouro(String logradouro) {
         this.logradouro = logradouro;
     }
+
     public void setBairro(String bairro) {
         this.bairro = bairro;
     }
+
     public void setLocalidade(String localidade) {
         this.localidade = localidade;
     }
+
     public void setUf(String uf) {
         this.uf = uf;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCep() {
         return cep;
     }
+
     public String getLogradouro() {
         return logradouro;
     }
+
     public String getBairro() {
         return bairro;
     }
+
     public String getLocalidade() {
         return localidade;
     }
+
     public String getUf() {
         return uf;
     }
+
+    @Override
+    public String toString() {
+        return "CEP: " + cep + 
+        "\nRua: " + logradouro + 
+        "\nNº: " + numero + 
+        "\nBairro: " + bairro +
+        "\nCidade: " + localidade + 
+        "\nUF: " + uf;
+    }
+
+    
 }
