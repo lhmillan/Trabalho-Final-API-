@@ -42,8 +42,7 @@ public class VeiculoService {
                 veiculo.getMarca(),
                 veiculo.getModelo(),
                 veiculo.getCor(),
-                veiculo.getAno()
-        );
+                veiculo.getAno());
     }
 
     public List<VeiculoResponseDTO> listarVeiculos() {
@@ -53,18 +52,16 @@ public class VeiculoService {
 
     public VeiculoResponseDTO buscarPorId(Long id) {
 
-        Veiculo veiculo = veiculoRepository.findById(id).orElseThrow(() ->
-                        new RuntimeException("Veículo não encontrado!"));
+        Veiculo veiculo = veiculoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Veículo não encontrado!"));
 
         return converterParaDTO(veiculo);
     }
 
     public VeiculoResponseDTO cadastrarVeiculo(VeiculoRequestDTO dto) {
-
-        Cliente cliente = clienteRepository.findById(dto.clienteId()).orElseThrow(() ->
-                        new RuntimeException("Cliente não encontrado!"));
-
         Veiculo veiculo = new Veiculo();
+        Cliente cliente = clienteRepository.findById(dto.clienteId())
+                .orElseThrow(() -> new RuntimeException("Cliente não encontrado!"));
 
         atualizarDadosVeiculo(veiculo, dto, cliente);
 
@@ -74,13 +71,13 @@ public class VeiculoService {
     }
 
     public VeiculoResponseDTO atualizarVeiculo(Long id,
-                                               VeiculoRequestDTO dto) {
+            VeiculoRequestDTO dto) {
 
-        Veiculo veiculo = veiculoRepository.findById(id).orElseThrow(() ->
-                        new RuntimeException("Veículo não encontrado!"));
+        Veiculo veiculo = veiculoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Veículo não encontrado!"));
 
-        Cliente cliente = clienteRepository.findById(dto.clienteId()).orElseThrow(() ->
-                        new RuntimeException("Cliente não encontrado!"));
+        Cliente cliente = clienteRepository.findById(dto.clienteId())
+                .orElseThrow(() -> new RuntimeException("Cliente não encontrado!"));
 
         atualizarDadosVeiculo(veiculo, dto, cliente);
 
@@ -91,11 +88,10 @@ public class VeiculoService {
 
     public void removerVeiculo(Long id) {
 
-        Veiculo veiculo = veiculoRepository.findById(id).orElseThrow(() ->
-                        new RuntimeException("Veículo não encontrado!"));
+        Veiculo veiculo = veiculoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Veículo não encontrado!"));
 
         veiculoRepository.delete(veiculo);
     }
-
 
 }

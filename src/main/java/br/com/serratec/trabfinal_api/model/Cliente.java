@@ -28,7 +28,7 @@ public class Cliente {
     @JoinColumn(name = "id_endereco")
     private Endereco endereco;
 
-    @JsonManagedReference
+    
     @OneToMany(mappedBy = "cliente")
     private List<Veiculo> veiculos = new ArrayList<>();
 
