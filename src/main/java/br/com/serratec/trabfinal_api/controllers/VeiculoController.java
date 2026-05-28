@@ -55,7 +55,7 @@ public class VeiculoController {
     }
 
     @PutMapping("/{id}")
-    public void atualizarVeiculo(@PathVariable Long id, @RequestBody VeiculoRequestDTO dto) {
+    public void atualizarVeiculo(@PathVariable Long id, @Valid @RequestBody VeiculoRequestDTO dto) {
         service.atualizarVeiculo(id, dto);
     }
 
