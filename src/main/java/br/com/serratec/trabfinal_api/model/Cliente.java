@@ -3,6 +3,8 @@ package br.com.serratec.trabfinal_api.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,8 +28,9 @@ public class Cliente {
     @JoinColumn(name = "id_endereco")
     private Endereco endereco;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "cliente")
-    private List<Veiculo> veiculo = new ArrayList<>();
+    private List<Veiculo> veiculos = new ArrayList<>();
 
     public String getTelefone() {
         return telefone;
@@ -78,7 +81,7 @@ public class Cliente {
     }
 
     public List<Veiculo> getVeiculo() {
-        return veiculo;
+        return veiculos;
     }
 
     @Override

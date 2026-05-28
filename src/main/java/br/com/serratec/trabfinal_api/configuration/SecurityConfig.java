@@ -43,6 +43,8 @@ public class SecurityConfig {
 	            .requestMatchers(HttpMethod.GET,"/clientes").permitAll()
 	            .requestMatchers(HttpMethod.POST,"/clientes").permitAll()
 	            .requestMatchers(HttpMethod.POST,"/perfis").permitAll()
+	            .requestMatchers(HttpMethod.POST,"/veiculos").permitAll()
+	            .requestMatchers(HttpMethod.GET,"/veiculos").permitAll()
 	            .requestMatchers("/h2-console/**").permitAll()
 	            
 	            .requestMatchers(HttpMethod.POST,"/usuarios").permitAll()
