@@ -1,28 +1,38 @@
 package br.com.serratec.trabfinal_api.service;
 
+import java.io.IOException;
+import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 import br.com.serratec.trabfinal_api.dto.request.VeiculoRequestDTO;
 import br.com.serratec.trabfinal_api.dto.response.VeiculoResponseDTO;
 import br.com.serratec.trabfinal_api.model.Cliente;
 import br.com.serratec.trabfinal_api.model.Veiculo;
 import br.com.serratec.trabfinal_api.repository.ClienteRepository;
 import br.com.serratec.trabfinal_api.repository.VeiculoRepository;
-
-import org.springframework.stereotype.Service;
-
-import java.util.List;
+import jakarta.transaction.Transactional;
 
 @Service
 public class VeiculoService {
-
-    private final VeiculoRepository veiculoRepository;
-    private final ClienteRepository clienteRepository;
-
-    public VeiculoService(VeiculoRepository veiculoRepository, ClienteRepository clienteRepository) {
-
-        this.veiculoRepository = veiculoRepository;
-        this.clienteRepository = clienteRepository;
-    }
-
+	
+	
+	@Autowired
+    private VeiculoRepository veiculoRepository;
+	
+	@Autowired
+    private ClienteRepository clienteRepository;
+	
+	@Autowired
+	private FotoService fotoService;
+    
+    
+    
     private void atualizarDadosVeiculo(Veiculo veiculo, VeiculoRequestDTO dto, Cliente cliente) {
 
         veiculo.setPlaca(dto.placa());
@@ -42,7 +52,9 @@ public class VeiculoService {
                 veiculo.getMarca(),
                 veiculo.getModelo(),
                 veiculo.getCor(),
-                veiculo.getAno());
+                veiculo.getAno(), 
+                null);
+        		
     }
 
     public List<VeiculoResponseDTO> listarVeiculos() {
@@ -92,6 +104,42 @@ public class VeiculoService {
                 .orElseThrow(() -> new RuntimeException("Veículo não encontrado!"));
 
         veiculoRepository.delete(veiculo);
+    }
+    
+    public List<VeiculoResponseDTO> listarComFoto(){
+    	return veiculoRepository.findAll().stream().map(veiculo -> adicionarUriFoto(veiculo)).collect(Collectors.toList());
+    }
+    
+    //retorna um dto com o link para abrir a foto que foi salva
+    public VeiculoResponseDTO adicionarUriFoto(Veiculo veiculo) {
+    	URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/veiculos/{id}/foto").buildAndExpand(veiculo.getId()).toUri();
+    	VeiculoResponseDTO dto = new VeiculoResponseDTO(
+                veiculo.getId(),
+                veiculo.getCliente().getId(),
+                veiculo.getPlaca(),
+                veiculo.getMarca(),
+                veiculo.getModelo(),
+                veiculo.getCor(),
+                veiculo.getAno(),
+                uri.toString()
+        );
+    	return dto;
+    }
+    
+    
+    @Transactional 
+    public VeiculoResponseDTO inserir(VeiculoRequestDTO dto, MultipartFile file) throws IOException {
+        Veiculo veiculo = new Veiculo();
+        
+        //nao quero criar o optional
+        Cliente cliente = clienteRepository.findById(dto.clienteId())
+                .orElseThrow(() -> new RuntimeException("Cliente não encontrado!"));
+
+        atualizarDadosVeiculo(veiculo, dto, cliente);
+
+        veiculo = veiculoRepository.save(veiculo);
+        fotoService.inserir(veiculo, file);
+        return adicionarUriFoto(veiculo);
     }
 
 }

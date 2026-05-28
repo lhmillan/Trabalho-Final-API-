@@ -50,9 +50,9 @@ public class SecurityConfig {
 	            .requestMatchers(HttpMethod.POST,"/usuarios").permitAll()
 
 	            .requestMatchers(HttpMethod.GET,"/usuarios").hasRole("ADMIN")
-	            // .requestMatchers(HttpMethod.GET, "/funcionarios/*/foto").hasAnyRole("ADMIN", "COMPRAS","RH")
-	            // .requestMatchers(HttpMethod.POST, "/funcionarios").hasAnyRole("ADMIN", "COMPRAS","RH")
-	            // .anyRequest().authenticated()
+	            .requestMatchers(HttpMethod.GET, "/veiculos/*/foto").hasAnyRole("ADMIN") //,"teste1", "teste2"
+	            .requestMatchers(HttpMethod.POST, "/veiculos").hasAnyRole("ADMIN")
+	            .anyRequest().authenticated()
 	        )
 	        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 	    .headers(headers -> headers.frameOptions(FrameOptionsConfig::disable)

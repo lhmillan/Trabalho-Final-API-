@@ -8,6 +8,7 @@ public record VeiculoResponseDTO (
         String marca,
         String modelo,
         String cor,
-        String ano
+        String ano,
+        String url
 ){
 }

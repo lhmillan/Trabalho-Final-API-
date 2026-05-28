@@ -70,11 +70,11 @@ public class Foto {
 		this.nome = nome;
 	}
 
-	public Veiculo getFuncionario() {
+	public Veiculo getVeiculo() {
 		return veiculo;
 	}
 
-	public void setFuncionario(Veiculo veiculo) {
+	public void setVeiculo(Veiculo veiculo) {
 		this.veiculo = veiculo;
 	}
 	
