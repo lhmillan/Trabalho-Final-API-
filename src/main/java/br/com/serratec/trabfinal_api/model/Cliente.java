@@ -28,7 +28,6 @@ public class Cliente {
     @JoinColumn(name = "id_endereco")
     private Endereco endereco;
 
-    
     @OneToMany(mappedBy = "cliente")
     private List<Veiculo> veiculos = new ArrayList<>();
 

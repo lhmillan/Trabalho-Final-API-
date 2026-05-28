@@ -76,4 +76,16 @@ public class Endereco {
     public String getUf() {
         return uf;
     }
+
+    @Override
+    public String toString() {
+        return "CEP: " + cep + 
+        "\nRua: " + logradouro + 
+        "\nNº: " + numero + 
+        "\nBairro: " + bairro +
+        "\nCidade: " + localidade + 
+        "\nUF: " + uf;
+    }
+
+    
 }
