@@ -18,8 +18,11 @@ import java.util.List;
 @Service
 public class ClienteService {
 
-    private final MailConfig mailConfig;
-    private final ClienteRepository clienteRepository;
+    @Autowired
+    private MailConfig mailConfig;
+
+    @Autowired
+    private ClienteRepository clienteRepository;
 
     @Autowired
     private EnderecoService service;
@@ -27,10 +30,7 @@ public class ClienteService {
     @Autowired
     private EnderecoRepository enderecoRepository;
 
-    public ClienteService(ClienteRepository clienteRepository, MailConfig mailConfig) {
-        this.clienteRepository = clienteRepository;
-        this.mailConfig = mailConfig;
-    }
+    
 
     private ClienteResponseDTO converterParaDTO(Cliente cliente) {
 
@@ -69,7 +69,7 @@ public class ClienteService {
 
         return converterParaDTO(cliente);
     }
-
+ 
     @Transactional
     public ClienteResponseDTO cadastrarCliente(ClienteRequestDTO dto) {
 

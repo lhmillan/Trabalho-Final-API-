@@ -18,14 +18,14 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
-    private String email;
     private String telefone;
     private String cpf;
+    private String email;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_endereco")
     private Endereco endereco;
-    
+
     @OneToMany(mappedBy = "cliente")
     private List<Veiculo> veiculo = new ArrayList<>();
 
@@ -76,7 +76,6 @@ public class Cliente {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-
 
     public List<Veiculo> getVeiculo() {
         return veiculo;
