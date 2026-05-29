@@ -9,9 +9,9 @@ import br.com.serratec.trabfinal_api.repository.ClienteRepository;
 import br.com.serratec.trabfinal_api.repository.OSRepository;
 import br.com.serratec.trabfinal_api.repository.VeiculoRepository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class OSService {
@@ -27,15 +27,15 @@ public class OSService {
         this.veiculoRepository = veiculoRepository;
     }
 
-    public List<OrdemServicoResponseDTO> listarOS() {
+    public Page<OrdemServicoResponseDTO> listarOS(Pageable pageable) {
 
-        return osRepository.findAll().stream().map(this::converterParaDTO).toList();
+        return osRepository.findAll(pageable).map(this::converterParaDTO);
     }
 
     public OrdemServicoResponseDTO buscarPorId(Long id) {
 
         OS os = osRepository.findById(id).orElseThrow(() ->
-                        new RuntimeException("Ordem de serviço não encontrada!"));
+                new RuntimeException("Ordem de serviço não encontrada!"));
 
         return converterParaDTO(os);
     }
@@ -43,10 +43,10 @@ public class OSService {
     public OrdemServicoResponseDTO cadastrarOS(OrdemServicoRequestDTO dto) {
 
         Cliente cliente = clienteRepository.findById(dto.cliente().getId()).orElseThrow(() ->
-                        new RuntimeException("Cliente não encontrado!"));
+                new RuntimeException("Cliente não encontrado!"));
 
         Veiculo veiculo = veiculoRepository.findById(dto.veiculo().getId()).orElseThrow(() ->
-                        new RuntimeException("Veículo não encontrado!"));
+                new RuntimeException("Veículo não encontrado!"));
 
         validarClienteDoVeiculo(cliente, veiculo);
         OS os = new OS();
@@ -59,13 +59,11 @@ public class OSService {
     public OrdemServicoResponseDTO atualizarOS(Long id, OrdemServicoRequestDTO dto) {
 
         OS os = osRepository.findById(id).orElseThrow(() ->
-                        new RuntimeException("OS não encontrada!"));
-
+                new RuntimeException("OS não encontrada!"));
         Cliente cliente = clienteRepository.findById(dto.cliente().getId()).orElseThrow(() ->
-                        new RuntimeException("Cliente não encontrado!"));
-
+                new RuntimeException("Cliente não encontrado!"));
         Veiculo veiculo = veiculoRepository.findById(dto.veiculo().getId()).orElseThrow(() ->
-                        new RuntimeException("Veículo não encontrado!"));
+                new RuntimeException("Veículo não encontrado!"));
 
         validarClienteDoVeiculo(cliente, veiculo);
         atualizarDadosOS(os, dto, cliente, veiculo);
@@ -77,7 +75,7 @@ public class OSService {
     public void removerOS(Long id) {
 
         OS os = osRepository.findById(id).orElseThrow(() ->
-                        new RuntimeException("OS não encontrada!"));
+                new RuntimeException("OS não encontrada!"));
 
         osRepository.delete(os);
     }
