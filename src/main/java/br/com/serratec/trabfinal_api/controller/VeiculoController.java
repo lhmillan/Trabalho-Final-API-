@@ -1,4 +1,4 @@
-package br.com.serratec.trabfinal_api.controllers;
+package br.com.serratec.trabfinal_api.controller;
 
 import java.io.IOException;
 import java.util.List;

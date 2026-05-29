@@ -1,8 +1,9 @@
-package br.com.serratec.trabfinal_api.controllers;
+package br.com.serratec.trabfinal_api.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,34 +16,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.serratec.trabfinal_api.dto.request.ServicoRequestDTO;
-import br.com.serratec.trabfinal_api.dto.response.ServicoResponseDTO;
-import br.com.serratec.trabfinal_api.service.FotoService;
-import br.com.serratec.trabfinal_api.service.ServicoService;
-import br.com.serratec.trabfinal_api.service.ServicoService;
+import br.com.serratec.trabfinal_api.dto.request.ClienteRequestDTO;
+import br.com.serratec.trabfinal_api.dto.response.ClienteResponseDTO;
+import br.com.serratec.trabfinal_api.service.ClienteService;
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
-@RequestMapping("/servicos")
-public class ServicoController {
+@RequestMapping("/clientes")
+public class ClienteController {
+
     @Autowired
-    private ServicoService service;
+    private ClienteService service;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ServicoResponseDTO cadastrarServico(@Valid @RequestBody ServicoRequestDTO dto) {
-        return service.cadastrarServico(dto);
+    public ClienteResponseDTO cadastrarCliente(@Valid @RequestBody ClienteRequestDTO dto) {
+        return service.cadastrarCliente(dto);
     }
 
     @GetMapping
-    public ResponseEntity<List<ServicoResponseDTO>> listarServicos() {
-        List<ServicoResponseDTO> lista = service.listarServicos();
+    public ResponseEntity<List<ClienteResponseDTO>> listarClientes() {
+        List<ClienteResponseDTO> lista = service.listarClientes();
         return ResponseEntity.ok(lista);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ServicoResponseDTO> buscarPorId(@PathVariable Long id) {
-        ServicoResponseDTO dto = service.buscarPorId(id);
+    public ResponseEntity<ClienteResponseDTO> buscarPorId(@PathVariable Long id) {
+        ClienteResponseDTO dto = service.buscarPorId(id);
         if (dto == null) {
             return ResponseEntity.notFound().build();
         }
@@ -50,12 +51,13 @@ public class ServicoController {
     }
 
     @PutMapping("/{id}")
-    public void atualizarServico(@PathVariable Long id, @Valid @RequestBody ServicoRequestDTO dto) {
-        service.atualizarServico(id, dto);
+    public void atualizarCliente(@PathVariable Long id, @Valid @RequestBody ClienteRequestDTO dto) {
+        service.atualizarCliente(id, dto);
     }
 
     @DeleteMapping("/{id}")
-    public void removerServico(@PathVariable Long id) {
-        service.removerServico(id);
+    public void removerCliente(@PathVariable Long id) {
+        service.removerCliente(id);
     }
+
 }

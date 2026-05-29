@@ -1,4 +1,4 @@
-package br.com.serratec.trabfinal_api.controllers;
+package br.com.serratec.trabfinal_api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
