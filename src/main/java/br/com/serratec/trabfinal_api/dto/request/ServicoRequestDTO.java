@@ -1,5 +1,6 @@
 package br.com.serratec.trabfinal_api.dto.request;
 
+import br.com.serratec.trabfinal_api.model.PecaServico;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -14,5 +15,7 @@ public record ServicoRequestDTO (
         Double valor,
 
         @NotBlank(message = "Tempo estimado é obrigatório!")
-        String tempoEstimado
+        String tempoEstimado,
+
+        PecaServico pecasUsadas
 ){ }

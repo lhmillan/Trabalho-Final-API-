@@ -17,7 +17,7 @@ public class Pecas {
     String nomePeça;
 
     @NotBlank(message = "Preencha a quantidade!")
-    String quantidade;
+    Integer quantidade;
 
     String preco;
 
@@ -37,20 +37,20 @@ public class Pecas {
         this.nomePeça = nomePeça;
     }
 
-    public String getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(String quantidade) {
-        this.quantidade = quantidade;
-    }
-
     public String getPreco() {
         return preco;
     }
 
     public void setPreco(String preco) {
         this.preco = preco;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
     }
 
 }

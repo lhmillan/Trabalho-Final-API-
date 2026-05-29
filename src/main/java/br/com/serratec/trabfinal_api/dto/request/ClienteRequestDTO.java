@@ -5,6 +5,9 @@ import org.hibernate.annotations.processing.Pattern;
 import br.com.serratec.trabfinal_api.dto.response.EnderecoResponseDTO;
 import br.com.serratec.trabfinal_api.model.Endereco;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.annotation.Generated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 
