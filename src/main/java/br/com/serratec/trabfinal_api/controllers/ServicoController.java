@@ -19,7 +19,6 @@ import br.com.serratec.trabfinal_api.dto.request.ServicoRequestDTO;
 import br.com.serratec.trabfinal_api.dto.response.ServicoResponseDTO;
 import br.com.serratec.trabfinal_api.service.FotoService;
 import br.com.serratec.trabfinal_api.service.ServicoService;
-import br.com.serratec.trabfinal_api.service.ServicoService;
 import jakarta.validation.Valid;
 
 @RestController

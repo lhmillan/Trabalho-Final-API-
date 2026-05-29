@@ -52,6 +52,7 @@ public class SecurityConfig {
 						.requestMatchers(HttpMethod.POST, "/veiculos").permitAll()
 						.requestMatchers(HttpMethod.GET, "/veiculos").permitAll()
 						.requestMatchers("/h2-console/**").permitAll()
+						.requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
 
 						.requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
 

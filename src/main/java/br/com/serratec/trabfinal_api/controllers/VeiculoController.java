@@ -22,7 +22,6 @@ import org.springframework.web.multipart.MultipartFile;
 import br.com.serratec.trabfinal_api.dto.request.VeiculoRequestDTO;
 import br.com.serratec.trabfinal_api.dto.response.VeiculoResponseDTO;
 import br.com.serratec.trabfinal_api.model.Foto;
-import br.com.serratec.trabfinal_api.model.Veiculo;
 import br.com.serratec.trabfinal_api.service.FotoService;
 import br.com.serratec.trabfinal_api.service.VeiculoService;
 import jakarta.validation.Valid;
@@ -84,5 +83,17 @@ public class VeiculoController {
 	public VeiculoResponseDTO inserir(@RequestPart("veiculo") VeiculoRequestDTO dto, @RequestPart("file") MultipartFile file) throws IOException {
 		return service.inserir(dto, file);
 	}
+	
+	//@PutMapping(value = "/{id}/foto", consumes = {org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE})
+	//public ResponseEntity<VeiculoResponseDTO> atualizar(
+	//        @PathVariable Long id, 
+	//        @RequestPart("veiculo") @Valid VeiculoRequestDTO dto, 
+	//        @RequestPart(value = "file", required = false) MultipartFile file) throws IOException {
+	//    
+	//    VeiculoResponseDTO response = fotoService.atualizar(dto, file);
+	//    return ResponseEntity.ok(response);
+	//}
+	
+	
     
 }
