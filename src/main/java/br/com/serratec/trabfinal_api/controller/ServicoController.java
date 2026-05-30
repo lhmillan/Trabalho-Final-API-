@@ -1,8 +1,6 @@
 package br.com.serratec.trabfinal_api.controller;
 
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,15 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.serratec.trabfinal_api.dto.request.ServicoRequestDTO;
 import br.com.serratec.trabfinal_api.dto.response.ServicoResponseDTO;
-import br.com.serratec.trabfinal_api.service.FotoService;
-import br.com.serratec.trabfinal_api.service.ServicoService;
 import br.com.serratec.trabfinal_api.service.ServicoService;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/servicos")
 public class ServicoController {
-    @Autowired
+    
     private ServicoService service;
 
     @PostMapping

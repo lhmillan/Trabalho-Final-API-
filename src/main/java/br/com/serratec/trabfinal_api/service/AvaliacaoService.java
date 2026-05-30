@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import br.com.serratec.trabfinal_api.dto.response.AvaliacaoResponseDTO;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class AvaliacaoService {
@@ -44,7 +43,7 @@ public class AvaliacaoService {
                         a.getComentario(),
                         a.getClienteId(),
                         a.getServicoId()
-                )).collect(Collectors.toList());
+                )).toList();
     }
 
     public br.com.serratec.trabfinal_api.dto.response.AvaliacaoResponseDTO buscarPorId(Long id) {

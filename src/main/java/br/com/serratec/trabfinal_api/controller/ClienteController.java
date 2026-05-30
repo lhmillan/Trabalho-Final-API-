@@ -2,8 +2,6 @@ package br.com.serratec.trabfinal_api.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,13 +18,11 @@ import br.com.serratec.trabfinal_api.dto.request.ClienteRequestDTO;
 import br.com.serratec.trabfinal_api.dto.response.ClienteResponseDTO;
 import br.com.serratec.trabfinal_api.service.ClienteService;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/clientes")
 public class ClienteController {
 
-    @Autowired
     private ClienteService service;
 
     @PostMapping
